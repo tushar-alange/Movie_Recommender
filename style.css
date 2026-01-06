@@ -1,0 +1,173 @@
+/* Body & Centering */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle, #1e3c72, #2a5298);
+    color: white;
+    margin: 0;
+    padding: 0;
+    
+    /* Center everything */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    position: relative;
+}
+
+/* Main container */
+.main-container {
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Heading */
+h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: #ffdd59;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+
+/* Search Form */
+.search-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.search-form input {
+    padding: 12px 15px;
+    width: 65%;
+    border-radius: 30px;
+    border: none;
+    font-size: 16px;
+    outline: none;
+}
+
+.search-form button {
+    padding: 12px 25px;
+    border-radius: 30px;
+    border: none;
+    background: #ff3d3d;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.search-form button:hover {
+    background: #ff7f50;
+    transform: scale(1.1);
+}
+
+/* Cards Container */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* Individual Card */
+.card {
+    background: linear-gradient(135deg, #ff7f50, #ff3d3d);
+    padding: 25px;
+    margin: 10px;
+    border-radius: 20px;
+    width: 180px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.4);
+    transition: transform 0.3s, box-shadow 0.3s;
+
+    /* Fade-in animation */
+    opacity: 0;
+    animation-name: fadeIn;
+    animation-duration: 0.6s;
+    animation-fill-mode: forwards;
+}
+
+/* Fade-in keyframes */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Card hover effect */
+.card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.6);
+}
+
+/* Card genres/text */
+.card p {
+    font-size: 14px;
+    margin-top: 8px;
+    color: #f0f0f0;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Back button */
+.back-btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 25px;
+    border-radius: 30px;
+    background: #ff3d3d;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.4s;
+}
+
+.back-btn:hover {
+    background: #ff7f50;
+    transform: scale(1.05);
+}
+
+/* Autocomplete items */
+.autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    background-color: white;
+    color: black;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 99;
+    width: 65%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+}
+
+.autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.autocomplete-items div:hover {
+    background-color: #e9e9e9;
+}
+
+/* Input focus effect */
+.search-form input:focus {
+    box-shadow: 0 0 8px #ff7f50;
+}
+
+/* Card title shadow */
+.card h3 {
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+}

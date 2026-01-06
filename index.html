@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="main-container">
+    <h1>🎬 Movie Recommender</h1>
+
+    <form method="POST" class="search-form">
+        <input type="text" id="movie-input" name="movie" placeholder="Enter a movie name..." required>
+        <button type="submit">Get Recommendations</button>
+    </form>
+</div>
+
+<script>
+let movieInput = document.getElementById('movie-input');
+let titles = [];
+
+// Fetch all movie titles from Flask
+fetch('/movies_list')
+.then(response => response.json())
+.then(data => titles = data);
+
+// Simple autocomplete
+movieInput.addEventListener('input', function() {
+    let val = this.value.toLowerCase();
+    closeAllLists();
+
+    if (!val) return false;
+
+    let list = document.createElement('div');
+    list.setAttribute('id', 'autocomplete-list');
+    list.setAttribute('class', 'autocomplete-items');
+    this.parentNode.appendChild(list);
+
+    titles.forEach(function(title) {
+        if (title.toLowerCase().includes(val)) {
+            let item = document.createElement('div');
+            item.innerHTML = "<strong>" + title.substr(0, val.length) + "</strong>";
+            item.innerHTML += title.substr(val.length);
+            item.addEventListener('click', function() {
+                movieInput.value = title;
+                closeAllLists();
+            });
+            list.appendChild(item);
+        }
+    });
+});
+
+function closeAllLists() {
+    let items = document.getElementsByClassName('autocomplete-items');
+    for (let i = 0; i < items.length; i++) {
+        items[i].parentNode.removeChild(items[i]);
+    }
+}
+</script>
+{% endblock %}

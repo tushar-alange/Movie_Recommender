@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="main-container">
+    <h1>🎬 Recommended Movies</h1>
+
+    {% if recommendations %}
+        <div class="cards">
+            {% for movie in recommendations %}
+            <div class="card" style="animation-delay: {{ loop.index0 * 0.2 }}s;">
+                <h3>{{ movie.title }}</h3>
+                <p>{{ movie.genres }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No recommendations found!</p>
+    {% endif %}
+
+    <a href="/" class="back-btn">🔙 Search Again</a>
+</div>
+{% endblock %}
